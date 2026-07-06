@@ -12,7 +12,7 @@ pipeline {
         stage('2. SonarQube Quality Analysis') {
             steps {
                 echo 'Sending web application files to local SonarQube dashboard...'
-                withSonarQubeEnv('Local-SonarQube') {
+                withSonarQubeEnv('SonarQube-Server-Config-Name') {
                     // Instructs SonarQube to parse HTML, CSS, and Javascript files
                     sh 'sonar-scanner -Dsonar.projectKey=web-login-pipeline -Dsonar.sources=.'
                 }
