@@ -14,7 +14,7 @@ pipeline {
                 echo 'Sending web application files to local SonarQube dashboard...'
                 withSonarQubeEnv('SonarQube-Server-Config-Name') {
                     // Instructs SonarQube to parse HTML, CSS, and Javascript files
-                    sh 'sonar-scanner -Dsonar.projectKey=web-login-pipeline -Dsonar.sources=.'
+                    bat 'sonar-scanner -Dsonar.projectKey=web-login-pipeline -Dsonar.sources=.'
                 }
             }
         }
@@ -23,9 +23,9 @@ pipeline {
             steps {
                 echo 'Verifying core assets exist on the local system...'
                 // Simple checks to ensure your web server files are structurally sound
-                sh 'test -f index.html'
-                sh 'test -f style.css'
-                sh 'test -f app.js'
+                bat 'test -f index.html'
+                bat 'test -f style.css'
+                bat 'test -f app.js'
                 echo '🚀 PIPELINE SUCCESS: Web assets verified and quality scanned!'
             }
         }
