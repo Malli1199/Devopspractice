@@ -3,7 +3,7 @@ pipeline {
     
     // 🔌 This tells Jenkins to automatically inject the SonarScanner path before running stages
     tools {
-        sonarScanner 'SonarQube-Server-Config-Name' // Must match the Name field you set in step 1 exactly!
+        sonarRunner 'SonarQube-Server-Config-Name' // Must match the Name field you set in step 1 exactly!
     }
     
     stages {
