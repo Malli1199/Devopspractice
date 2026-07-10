@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-    
+    // 🔌 The exact Groovy identifier wrapper for the SonarQube tool plugin
     tools {
-        'sonar 'SonarQube-Server-Config-Name'
+        sonarRunnerEnv 'My-Sonar-Scanner' // Must match the Name field you set in Jenkins Tools UI exactly!
     }
     
     stages {
