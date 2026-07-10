@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-    // 🔌 This tells Jenkins to automatically inject the SonarScanner path before running stages
+    // 🔌 The correct internal Jenkins identifier is 'sonar-scanner'
     tools {
-        sonarRunner 'SonarQube-Server-Config-Name' // Must match the Name field you set in step 1 exactly!
+        'sonar-scanner' 'SonarQube-Server-Config-Name' // Must match the Name field you set in Jenkins Tools UI exactly!
     }
     
     stages {
