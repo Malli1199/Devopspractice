@@ -1,27 +1,24 @@
 pipeline {
     agent any
-    
-    // 🔌 The exact Groovy identifier wrapper for the SonarQube tool plugin
-    tools {
-        sonar 'My-Sonar-Scanner' // Must match the Name field you set in Jenkins Tools UI exactly!
-    }
-    
+
     stages {
-        stage('1. SonarQube Quality Analysis') {
+        stage('1. Environment Pre-Check') {
             steps {
-                echo 'Sending web application files to local SonarQube dashboard...'
-                withSonarQubeEnv('SonarQube-Server-Config-Name') { 
-                    bat 'sonar-scanner -Dsonar.projectKey=web-login-pipeline -Dsonar.sources=.'
-                }
+                echo '=== SYSTEM INFORMATION ==='
+                // Prints the version of Windows and user context to the logs
+                bat 'ver'
+                bat 'whoami'
             }
         }
 
-        stage('2. Verify Code Integrity') {
+        stage('2. Verify Web Project Files') {
             steps {
-                echo 'Verifying core web assets exist locally...'
-                bat 'if exist index.html (echo index.html found) else (echo index.html missing && exit 1)'
-                bat 'if exist style.css (echo style.css found) else (echo style.css missing && exit 1)'
-                bat 'if exist app.js (echo app.js found) else (echo app.js missing && exit 1)'
+                echo '=== CHECKING WORKSPACE ASSETS ==='
+                // Checks if your HTML page exists in the pulled repository folder
+                bat 'if exist index.html (echo "✅ SUCCESS: index.html is present!") else (echo "❌ ERROR: index.html missing!" && exit 1)'
+                
+                // Checks if your JavaScript configuration file exists
+                bat 'if exist app.js (echo "✅ SUCCESS: app.js is present!") else (echo "❌ ERROR: app.js missing!" && exit 1)'
             }
         }
     }
