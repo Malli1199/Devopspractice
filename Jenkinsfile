@@ -3,7 +3,7 @@ pipeline {
     
     // 🔌 The exact Groovy identifier wrapper for the SonarQube tool plugin
     tools {
-        sonarRunnerEnv 'My-Sonar-Scanner' // Must match the Name field you set in Jenkins Tools UI exactly!
+        sonar 'My-Sonar-Scanner' // Must match the Name field you set in Jenkins Tools UI exactly!
     }
     
     stages {
