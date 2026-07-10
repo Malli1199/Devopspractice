@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-    // 🔌 The correct internal Jenkins identifier is 'sonar-scanner'
+    
     tools {
-        'sonar 'SonarQube-Server-Config-Name' // Must match the Name field you set in Jenkins Tools UI exactly!
+        'sonar 'SonarQube-Server-Config-Name'
     }
     
     stages {
